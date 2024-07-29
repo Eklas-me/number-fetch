@@ -1,5 +1,5 @@
 document.getElementById("getNumberBtn").addEventListener("click", () => {
-  const apiUrl = "http://localhost:3000/getMobile";
+  const apiUrl = "http://number-fetch-production.up.railway.app/getMobile";
   const pollInterval = 5000; // 5 seconds
   const maxAttempts = 12; // Poll for 1 minute (12 * 5 seconds)
 
@@ -41,7 +41,9 @@ function pollForVerificationCode(phoneNumber, pollInterval, maxAttempts) {
       return;
     }
 
-    fetch(`http://localhost:3000/getMsg?pn=${phoneNumber}`)
+    fetch(
+      `http://number-fetch-production.up.railway.app/getMsg?pn=${phoneNumber}`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
